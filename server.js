@@ -12,7 +12,7 @@ app.use(express.static("public", {'extensions': ['html']}));
 app.get("/", (req, res) => {
   res.render("index", {
     title: "Islam profile",
-    subheading: "A modern Website built in Node",
+    subheading: "A modern Website built in Node"
   });
 });
 
@@ -27,6 +27,8 @@ app.get("/admin", (req, res) => {
 app.get("/contact", (req, res) => {
   res.render("contact");
 });
+
+//
 
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server is listening on port 3000. Ready to accept requests!");
