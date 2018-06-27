@@ -21,6 +21,7 @@ const savePost = (newPost, callback) => {
         }
         
         const posts = JSON.parse(file.toString());
+        newPost.id = posts.length + 1;
         posts.splice(0, 0, newPost);
 
         fs.writeFile(filePath, JSON.stringify(posts, null, 2), (error) => {
