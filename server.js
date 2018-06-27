@@ -26,6 +26,23 @@ app.get("/", (req, res) => {
   fs.readFile(filePath, callbackFunction);
 });
 
+app.get("/posts/:postId", (req, res) => {
+  const filePath = __dirname + "/data/posts.json";
+  const callbackFunction = (error, file) => {
+    const fileData = file.toString();
+    const postsJson = JSON.parse(fileData);
+
+    const post = postsJson.find(post => post.id == req.params.postId);
+
+    res.render("post", {
+      name: post.title,
+      summary: post.summary,
+      content: post.content
+    });
+  };
+  fs.readFile(filePath, callbackFunction);
+});
+
 app.get("/my-cv", (req, res) => {
   res.render("my-cv");
 });
